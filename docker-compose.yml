@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  server:
+    image: server:1.0.0
+    container_name: server
+    networks:
+      - my-net
+    ports:
+      - 8000:8000
+    env_file:
+      - ./server/ENV_FILE.env
+
+  scraping:
+    image: scraping:1.0.0
+    container_name: scraping
+    networks:
+      - my-net
+    environment:
+      POST_URL: http://server:8000/datasciences
+    env_file:
+      - ./scraping/ENV_FILE.env
+    restart: on-failure
+
+networks:
+  my-net:
+    driver: bridge
