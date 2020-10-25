@@ -4,8 +4,6 @@ services:
   server:
     image: server:1.0.0
     container_name: server
-    networks:
-      - my-net
     ports:
       - 8000:8000
     env_file:
@@ -14,14 +12,11 @@ services:
   scraping:
     image: scraping:1.0.0
     container_name: scraping
-    networks:
-      - my-net
+    cap_add:
+      - SYS_ADMIN
     environment:
       POST_URL: http://server:8000/datasciences
     env_file:
       - ./scraping/ENV_FILE.env
     restart: on-failure
-
-networks:
-  my-net:
-    driver: bridge
+    command: "node datasciences.js"
