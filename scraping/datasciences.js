@@ -149,5 +149,4 @@ const getJobContent = async (job_id) => {
 
 }
 
-
 main(JOB_SEARCH_SPECS)
