@@ -16,3 +16,4 @@ Each of the ENV_FILE is different for each service,
 for server the ENV_FILE must contain SERVER_PORT, MONGODB_URL
 
 for scraping the ENV_FILE must contain PROXY, USER, PASSWORD, KEY_WORDS, LOCATION, TIME_RANGE, POST_URL
+the variable POST_URL must correspond to the server service, like http://server:8000/datasciences for this case
