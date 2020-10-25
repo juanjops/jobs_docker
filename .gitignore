@@ -1,2 +1,4 @@
 scraping/node_modules/
 server/node_modules/
+scraping/ENV_FILE.env
+scraping/ENV_FILE.env
