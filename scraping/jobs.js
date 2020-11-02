@@ -5,9 +5,19 @@ const httpProxyAgent = require('http-proxy-agent')
 
 
 const JOB_SEARCH_SPECS = {
+    "experience": process.env.EXPERIENCE.split(","),
     "key_words": process.env.KEY_WORDS,
     "location" : process.env.LOCATION,
     "time_range": process.env.TIME_RANGE
+}
+
+const EXPERIENCE_PARAMETERS = {
+    "Internship": 1,
+    "Entry level": 2,
+    "Associate": 3,
+    "Mid-Senior level": 4,
+    "Director": 5,
+    "Executive": 6
 }
 
 const TIMES_PARAMETERS = {
@@ -64,9 +74,13 @@ const getJobsId = async (job_search_specs) => {
         await page.type('#password', process.env.PASSWORD)
         await page.click(".from__button--floating")
         await page.waitForNavigation()
+        const experience_map = job_search_specs["experience"].map(
+            experience => EXPERIENCE_PARAMETERS[experience]).join("%2C")
         for (let page_number = 1; page_number < 40; page_number++) {
             let job_url = (
-                LINKEDIN_URL + "/jobs/search/?" + "f_E=2%2C3%2C4" +
+                LINKEDIN_URL + "/jobs/search/?" +
+                "f_E=" +
+                experience_map +
                 "&f_TPR=" + 
                 TIMES_PARAMETERS[job_search_specs["time_range"]] +
                 "&keywords=" +

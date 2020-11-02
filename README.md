@@ -16,7 +16,17 @@ Each of the ENV_FILE is different for each service,
 
 for server the ENV_FILE must contain SERVER_PORT, MONGODB_URL
 
-for scraping the ENV_FILE must contain PROXY, USER, PASSWORD, KEY_WORDS, LOCATION, TIME_RANGE, POST_URL
+for scraping the ENV_FILE must contain PROXY, USER, PASSWORD, EXPERIENCE, KEY_WORDS, LOCATION, TIME_RANGE, POST_URL
+The EXPERIENCE must be a string separated with comma without spaces and in this order of appeareace:
+
+    "Internship": 1,
+    "Entry level": 2,
+    "Associate": 3,
+    "Mid-Senior level": 4,
+    "Director": 5,
+    "Executive": 6
+Example: Internship,Associate
+
 The variable POST_URL is put in the docker command not in the env_file to check the server service 
 
 for crontab with docker every file and program must use the absolute route, for example every day at 21:44
