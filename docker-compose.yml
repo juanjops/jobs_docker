@@ -7,7 +7,7 @@ services:
     ports:
       - 8000:8000
     env_file:
-      - ./server/ENV_FILE.env
+      - /home/jpardosi/Projects/docker/users/IRENE_SERVER.env
 
   scraping:
     image: scraping:1.0.0
@@ -15,8 +15,8 @@ services:
     cap_add:
       - SYS_ADMIN
     environment:
-      POST_URL: http://server:8000/datasciences
+      POST_URL: http://server:8000/jobs
     env_file:
-      - ./scraping/ENV_FILE.env
+      - /home/jpardosi/Projects/docker/users/IRENE_SCRAPING.env
     restart: on-failure
-    command: "node datasciences.js"
+    command: "node jobs.js"

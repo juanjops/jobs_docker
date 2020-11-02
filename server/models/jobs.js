@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const dataScience = mongoose.model("datasciences", {
+const jobs = mongoose.model("jobs", {
 
     job_id: {type: String, required : true, trim: true},
     title: {type: String, trim: true},
@@ -14,9 +14,9 @@ const dataScience = mongoose.model("datasciences", {
     target: {type: String, trim: true},
     link: {type: String}
     },
-    "datasciences"
+    "jobs"
 )
 
 module.exports = {
-    dataScience
+    jobs
 }
