@@ -7,7 +7,7 @@ services:
     ports:
       - 8000:8000
     env_file:
-      - /home/jpardosi/Projects/docker/users/IRENE_SERVER.env
+      - /home/jpardosi/Projects/docker/users/MARIANNA_SERVER.env
 
   scraping:
     image: scraping:1.0.0
@@ -17,6 +17,6 @@ services:
     environment:
       POST_URL: http://server:8000/jobs
     env_file:
-      - /home/jpardosi/Projects/docker/users/IRENE_SCRAPING.env
+      - /home/jpardosi/Projects/docker/users/MARIANNA_SCRAPING.env
     restart: on-failure
     command: "node jobs.js"
